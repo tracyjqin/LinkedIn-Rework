@@ -1,0 +1,206 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial;
+}
+
+.hide {
+    display: none;
+}
+
+.nav-item:hover {
+    cursor: pointer;
+}
+
+.logo {
+    text-align: center;
+}
+
+.modal-box, .watch-modal-box, .comment-modal-box {
+    margin: auto;
+    width: 350px;
+    box-shadow: #a7a7a7 0px 2px 8px 0px;
+    padding: 0px 10px 0px 10px;
+    border-radius: 10px;
+}
+
+.modal-box {
+    height: 125px;
+}
+
+.watch-modal-box, .comment-modal-box {
+    height: 145px;
+}
+
+.modal-spacing, #likes-list, #comments-list {
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#likes-list, #comments-list {
+    visibility: hidden;
+}
+
+.container, .profile-container, #profile-card, #view-profile {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+}
+
+#display-photo, #profile-job-image {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content, .profile-content {
+    margin: auto;
+}
+
+.profile-content {
+    text-align: center;
+}
+
+.card-box {
+    display: none;
+    margin: 0px 0px 10px 0px;
+    width: 380px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+}
+
+.register-form, .login-form {
+    display: flex;
+    justify-content: center;
+}
+
+#register-form-box, #login-form-box, #edit-profile-box {
+    margin: 10px 8px 10px 0px;
+    height: 390px;
+    width: 380px;
+}
+
+#edit-profile-box {
+    margin: auto;
+}
+
+.nav {
+    justify-content: right;
+}
+
+#footer {
+    margin-top: 100px;
+}
+
+.existing-login {
+    text-align: center;
+}
+
+#nav-login, #nav-register {
+    font-weight: bold;
+}
+
+.text-centre {
+    display: flex;
+    flex-direction: row;
+}
+
+.logo {
+    margin-top: 50px;
+}
+
+#user {
+    margin-top: -50px;
+}
+#start {
+    margin-top: 5px;
+}
+
+.list-group {
+    width: 380px;
+}
+
+.card, .card-box {
+    display: none;
+    visibility: hidden;
+}
+
+#create-job {
+    margin-top: 8px;
+    margin-bottom: -100px;
+    width: 380px;
+    height: 40px;
+}
+
+#likes, #comments, #add-likes, #add-comments, #new-comment {
+    visibility: hidden;
+}
+
+.interactions {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+}
+
+.small-box {
+    width: 190px;
+
+}
+
+.hide-this, #edit-profile, #watch, #unwatch {
+    display: none;
+    margin-top: 5px;
+}
+
+.feed-container {
+    margin-top: 45px;
+}
+
+#profile-job-card {
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.right, .watch-footer, .comment-footer {
+    display: flex;
+    flex-direction: row;
+}
+
+#display-photo {
+    width: 100px;
+    height: 100px;
+}
+
+#watch-user {
+    margin-top: 50px;
+    margin-bottom: -60px;
+}
+
+.watch-footer, .comment-footer {
+    justify-content: right;
+    margin-top: -40px;
+}
+
+#profile-job-image {
+    height: auto;
+    width: 200px;
+    justify-content: center;
+    display: none;
+}
+
+#user {
+    margin-top: -87px;
+}
+
+#edit-job, #delete-job {
+    width: 100px !important; 
+}
+
+#display-photo {
+    border-radius: 50%;
+}
+

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>LurkForWork</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles/global.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <header>
+    </header>
+    <main aria-label="lurkforwork-app" role="main">
+        <div id="section-logged-in" class="hide">
+            <nav class="navbar navbar-dark bg-dark justify-content-between">
+                <div class="">
+                    <span class="navbar-brand mb-0 h1" >lurkforwork
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16">
+                            <path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.578 3.578 0 0 0-.108-.563 2.22 2.22 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2.35 2.35 0 0 0-.16-.045 3.797 3.797 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.552 2.552 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526l.24-2.408Zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361.599.599.437 1.732-.36 2.531Z"/>
+                            <path d="M5.205 10.787a7.632 7.632 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925Z"/>
+                          </svg>
+                    </span>
+                </div>
+                <form class="form-inline my-2 my-sm-0">
+                    <button aria-label="night-mode" class="btn btn-sm btn-outline-warning" type="button" id="night-mode">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon" viewBox="0 0 16 16">
+                        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278zM4.858 1.311A7.269 7.269 0 0 0 1.025 7.71c0 4.02 3.279 7.276 7.319 7.276a7.316 7.316 0 0 0 5.205-2.162c-.337.042-.68.063-1.029.063-4.61 0-8.343-3.714-8.343-8.29 0-1.167.242-2.278.681-3.286z"/>
+                      </svg>
+                    </button>
+                    <button aria-label="feed-button" class="btn btn-sm btn-secondary" type="button" id="my-feed">Feed</button>
+                    <button aria-label="view-my-profile" class="btn btn-sm btn-secondary" type="button" id="my-profile">Profile</button>
+                    <button aria-label="logout-button" class="btn btn-sm btn-outline-secondary" type="button" id="logout">Logout</button>
+
+                  </form>
+            </nav>
+            <div class="hide" id="feed-page">
+                <div class="container">
+                    <div class="content">
+                        <div class="d-grid">
+                            <button aria-label="create-job-post" type="button" class="btn btn-dark" id="create-job">Create Job</button>
+                            <button aria-label="watch-a-user" type="button" class="btn btn-success" id="watch-user">Watch a User!</button>
+                            <br />
+                        </div>
+                        <div class="feed-container" id="feed-items"></div>
+                        <div class="hide-this">
+                            <button aria-label="edit-job-post" type="button" class="btn btn-outline-dark btn-sm" id="edit-job">Edit</button>
+                            <button aria-label="delete-job-post" type="button" class="btn btn-danger btn-sm" id="delete-job">Delete Job</button>
+                            <div class="card card-box" id="job-card" >
+                                <p class="h6 fw-bolder" id="user"></p>
+                                <p class="card-subtitle mb-2 text-muted" id="timestamp"></p>
+                                <img aria-label="job-image" id="job-image">
+                                <h5 class="card-title" id="job-title"></h5>
+                                <p class="fw-normal card-text" id="job-description"></p>
+                                <h6 class="card-subtitle mb-2 text-muted" id="start"></h6>
+                                <div class="interactions">
+                                    <div aria-label="view-likes" class="btn btn-dark btn-sm" id="likes"></div>
+                                    <div aria-label="view-comments" class="btn btn-dark btn-sm" id="comments"></div>
+                                    <div aria-label="add-like" class="btn btn-outline-dark btn-sm" id="add-likes"></div>
+                                    <input aria-label="comment-text-box" class="form-control" id="new-comment" placeholder="Type your comment here..." type="text"/>
+                                    <div aria-label="add-comment" class="btn btn-outline-dark btn-sm" id="add-comments"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                          <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                          </li>
+                          <li class="page-item"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                          </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="hide" id="profile-page">
+                <div class="right">
+                    <button aria-label="edit-profile-button" type="button" class="btn btn-outline-dark btn-sm" id="edit-profile">Edit Profile</button>
+                    <button aria-label="watch-this-user" type="button" class="btn btn-outline-dark btn-sm" id="watch">Watch</button>
+                    <button aria-label="unwatch-this-user" type="button" class="btn btn-outline-dark btn-sm" id="unwatch">Unwatch</button>
+                </div>
+                <div class="container">
+                    <div class="profile-content">
+                        <div id="view-profile"></div>
+                        <div class="hide-this">
+                            <div class="hide" id="profile-card" >
+                                <img aria-label="profile-photo" id="display-photo">
+                                <p class="h2" id="profile-name"></p>
+                                <p class="h6" id="user-id"></p>
+                                <p class="h6" id="user-email"></p>
+                                <p class="h6" id="watched-by"></p>
+                                <p class="h4" id="watchees"></p>
+                                <button aria-label="view-watchee-profile" type="button" class="btn btn-dark btn-sm" id="watchees-person"></button>
+                                <p class="h4" id="profile-jobs"></p>
+                                <div id="profile-job-card">
+                                    <p class="card-subtitle mb-2 text-muted" id="profile-timestamp"></p>
+                                    <img aria-label="profile-display-photo" id="profile-job-image">
+                                    <h5 class="card-title" id="profile-job-title"></h5>
+                                    <p class="fw-normal card-text" id="profile-job-description"></p>
+                                    <h6 class="card-subtitle mb-2 text-muted" id="profile-start"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hide" id="edit-profile-form">
+                <div class="form-group" id="edit-profile-box">
+                    </br>
+                    <h4>Edit Profile</h4>
+                    New Name: <input aria-label="new-name-textbox" class="form-control" id="edit-name" type="text"/><br />
+                    New Email Address: <input aria-label="edit-email-textbox" class="form-control" id="edit-email" type="text"/><br />
+                    New Password: <input aria-label="change-password-textbox" class="form-control" id="edit-password" type="text"/><br />                    
+                    Upload Image: <input aria-label="upload-image" type="file" class="form-control" id="edit-image" />
+                    </br>
+                    <div class="d-grid gap-2">
+                        <button aria-label="edit-profile-confirm" class="btn btn-outline-primary" id="edit-button">Confirm</button>
+                    </div>
+                    <div class="existing-login">
+                        <li class="btn btn-link" class="nav-item" id="nav-back">Go back</li>
+                    </div>
+                </div>
+            </div>
+            <div class="hide" id="create-job-form">
+                <div class="form-group" id="edit-profile-box">
+                    </br>
+                    <h4>Add Job</h4>
+                    Title: <input aria-label="job-title-textbox" class="form-control" id="add-title" type="text"/><br />
+                    Image: <input aria-label="upload-job-image" type="file" class="form-control" id="add-image"/><br />
+                    Start: <input aria-label="input-job-start" class="form-control" id="add-start" type="date"/><br />                    
+                    Description: <input aria-label="job-description-textbox" class="form-control" id="add-description" type="text"/><br />
+                    <div class="d-grid gap-2">
+                        <button aria-label="confirm-job-posting" class="btn btn-outline-primary" id="confirm-job">Confirm</button>
+                    </div>
+                    <div class="existing-login">
+                        <li aria-label="navigate-to-feed" class="btn btn-link" class="nav-item" id="nav-job-back">Go back</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section-logged-out">
+            <div class="logo" id="big-logo">
+                <h1>lurkforwork.com
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-rocket-takeoff-fill" viewBox="0 0 16 16">
+                        <path d="M12.17 9.53c2.307-2.592 3.278-4.684 3.641-6.218.21-.887.214-1.58.16-2.065a3.578 3.578 0 0 0-.108-.563 2.22 2.22 0 0 0-.078-.23V.453c-.073-.164-.168-.234-.352-.295a2.35 2.35 0 0 0-.16-.045 3.797 3.797 0 0 0-.57-.093c-.49-.044-1.19-.03-2.08.188-1.536.374-3.618 1.343-6.161 3.604l-2.4.238h-.006a2.552 2.552 0 0 0-1.524.734L.15 7.17a.512.512 0 0 0 .433.868l1.896-.271c.28-.04.592.013.955.132.232.076.437.16.655.248l.203.083c.196.816.66 1.58 1.275 2.195.613.614 1.376 1.08 2.191 1.277l.082.202c.089.218.173.424.249.657.118.363.172.676.132.956l-.271 1.9a.512.512 0 0 0 .867.433l2.382-2.386c.41-.41.668-.949.732-1.526l.24-2.408Zm.11-3.699c-.797.8-1.93.961-2.528.362-.598-.6-.436-1.733.361-2.532.798-.799 1.93-.96 2.528-.361.599.599.437 1.732-.36 2.531Z"/>
+                        <path d="M5.205 10.787a7.632 7.632 0 0 0 1.804 1.352c-1.118 1.007-4.929 2.028-5.054 1.903-.126-.127.737-4.189 1.839-5.18.346.69.837 1.35 1.411 1.925Z"/>
+                      </svg>
+                </h1>
+            </div>
+            <div id="page-register">
+                <br />
+                <div class="register-form">
+                    <div class="form-group" id="register-form-box">
+                        <h4>Register</h4>
+                        Email: <input aria-label="email-input" class="form-control" id="register-email" type="text"/><br />
+                        Name: <input aria-label="name-input" class="form-control" id="register-name" type="text"/><br />
+                        Password: <input aria-label="input-password" class="form-control" id="register-password" type="text"/><br />
+                        Confirm Password: <input aria-label="confirm-password" class="form-control" id="confirm-password" type="text"/><br />
+                        <div class="d-grid gap-2">
+                            <button aria-label="register-confirmation" class="btn btn-outline-primary" id="register-button">Register</button>
+                        </div>
+                        <div class="existing-login">
+                            Already have an account?
+                            <li aria-label="link-login-page" class="btn btn-link" class="nav-item" id="nav-login">Login</li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="page-login" class="hide">
+                <br />
+                <div class="login-form">
+                    <div class="form-group" id="login-form-box">
+                        <h4>Login</h4>
+                        Email: <input aria-label="user-email" class="form-control" id="login-email" type="text"/><br />
+                        Password: <input aria-label="user-password" class="form-control" id="login-password" type="text"/><br />
+                        <div class="d-grid gap-2">
+                            <button aria-label="confirm-login" class="btn btn-outline-primary" id="login-button">Login</button>
+                        </div>
+                        <div class="existing-login">
+                            Don't have an account?
+                            <li aria-label="navigate-register" class="btn btn-link" class="nav-item" id="nav-register">Register</li>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="modal-spacing hide" id="error-popup">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title"></h5>
+                </div>
+                <div class="modal-body" id="body"></div>
+                <br />
+                <div class="modal-footer">
+                    <button aria-label="close-modal" class="btn btn-secondary" id="close-button" >Close</button>
+                </div>
+            </div>  
+        </div>
+        <div class="modal-spacing hide" id="watch-popup">
+            <div class="watch-modal-box">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="title">Enter the user's email</h5>
+                </div>
+                Email: <input aria-label="watch-email" class="form-control" id="watchee-email" type="text"/><br />
+                <br />
+                <div class="watch-footer">
+                    <button aria-label="close-modal" class="btn btn-secondary" id="watch-close-button">Close</button>
+                    <button aria-label="submit-watch" class="btn btn-secondary" id="watch-submit-button">Submit</button>
+                </div>
+            </div>  
+        </div>
+        <div class="list-group hide" id="likes-list">
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                </svg>
+                <b>Likes</b>
+                <button aria-label="close-likes" type="button" class="btn btn-outline-dark btn-sm" id="close-likes">Close</button>
+            </li>
+            <li class="list-group-item" id="liked-people"><a href="#" class="link-dark"></a></li>
+        </div>            
+        <div class="list-group" id="comments-list">
+            <li class="list-group-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-quote-fill" viewBox="0 0 16 16">
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm7.194 2.766a1.688 1.688 0 0 0-.227-.272 1.467 1.467 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 5.734 4C4.776 4 4 4.746 4 5.667c0 .92.776 1.666 1.734 1.666.343 0 .662-.095.931-.26-.137.389-.39.804-.81 1.22a.405.405 0 0 0 .011.59c.173.16.447.155.614-.01 1.334-1.329 1.37-2.758.941-3.706a2.461 2.461 0 0 0-.227-.4zM11 7.073c-.136.389-.39.804-.81 1.22a.405.405 0 0 0 .012.59c.172.16.446.155.613-.01 1.334-1.329 1.37-2.758.942-3.706a2.466 2.466 0 0 0-.228-.4 1.686 1.686 0 0 0-.227-.273 1.466 1.466 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 10.07 4c-.957 0-1.734.746-1.734 1.667 0 .92.777 1.666 1.734 1.666.343 0 .662-.095.931-.26z"/>
+                  </svg>
+                <b>Comments</b>
+                <button aria-label="close-comments" type="button" class="btn btn-outline-dark btn-sm" id="close-comments">Close</button>
+            </li>
+            <li class="list-group-item" id="commented-people"><a href="#" class="link-dark"></a></li>
+        </div>            
+    </main>
+    <script type="module" src="src/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
